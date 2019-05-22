@@ -8,11 +8,11 @@
 class TestScript : public engine::BasicScript
 {
 public:
-    double timeCounter = 0;
+
     void update();
     void start();
     void collide(engine::CollisionDetails& details);
-    std::vector<sf::Texture> animation;
+
 };
 
 class EnemyScript : public engine::BasicScript
@@ -32,32 +32,26 @@ void TestScript::update()
 
     if (_2DEngine::KeyboardInput::getKey(KeyCode::A))
     {
-        parentObject->getComponent<PhysicalBody>()->velocity.x = -300;
+        parentObject->position.x  -= 300*_2DEngine::Time::deltaTime;
     }
 
 
     if (_2DEngine::KeyboardInput::getKey(KeyCode::D))
     {
 
-        parentObject->getComponent<PhysicalBody>()->velocity.x = 300;
-        timeCounter += _2DEngine::Time::deltaTime;
-        int spriteCounter = timeCounter*32;
-        if (spriteCounter > animation.size() - 1)
-        {
-            timeCounter = 0;
-            spriteCounter = 0;
-        }
-        parentObject->getComponent<Renderer>()->setSprite(animation[spriteCounter]);
+        parentObject->position.x  += 300*_2DEngine::Time::deltaTime;
+
+        parentObject->getComponent<Animation>()->update();
     }
 
     if (_2DEngine::KeyboardInput::getKey(KeyCode::W))
     {
-        parentObject->getComponent<PhysicalBody>()->velocity.y = -300;
+        parentObject->position.y  -= 300*_2DEngine::Time::deltaTime;
     }
 
     if (_2DEngine::KeyboardInput::getKey(KeyCode::S))
     {
-        parentObject->getComponent<PhysicalBody>()->velocity.y = 300;
+        parentObject->position.y  += 300*_2DEngine::Time::deltaTime;
     }
 
 }
@@ -65,33 +59,19 @@ void TestScript::update()
 void TestScript::start()
  {
         parentObject->setPosition(600, 0);
-        sf::Texture playerTexture;
-        playerTexture.loadFromFile("sprites/1.png");
-        animation.push_back(playerTexture);
-        playerTexture.loadFromFile("sprites/2.png");
-        animation.push_back(playerTexture);
-        playerTexture.loadFromFile("sprites/3.png");
-        animation.push_back(playerTexture);
-        playerTexture.loadFromFile("sprites/4.png");
-        animation.push_back(playerTexture);
-        playerTexture.loadFromFile("sprites/5.png");
-        animation.push_back(playerTexture);
-        playerTexture.loadFromFile("sprites/6.png");
-        animation.push_back(playerTexture);
-        playerTexture.loadFromFile("sprites/7.png");
-        animation.push_back(playerTexture);
-        playerTexture.loadFromFile("sprites/8.png");
-        animation.push_back(playerTexture);
-
         parentObject->addComponent<Renderer>();
-        parentObject->getComponent<Renderer>()->setSprite(animation[0]);
-        //parentObject->getComponent<Renderer>()->sprite.setTextureRect(sf::IntRect(15, 137, 33, 35));
-
+        parentObject->addComponent<Animation>();
+        for(int i = 1; i<=8; i++)
+        {
+            parentObject->getComponent<Animation>()->upload("sprites/" + std::to_string(i) + ".png");
+        }
+        parentObject->getComponent<Renderer>()->setSprite(parentObject->getComponent<Animation>()->pictures[0]);
+        parentObject->getComponent<Animation>()->timeMultiplier = 32;
         parentObject->addComponent<RectCollider>();
+        parentObject->addComponent<PhysicalBody>();
         parentObject->getComponent<RectCollider>()->setCollider(-100, -100, 100, 100);
         parentObject->getComponent<RectCollider>()->display();
-        parentObject->addComponent<PhysicalBody>();
-        parentObject->getComponent<RectCollider>()->isDynamic = false;
+
 
 }
 

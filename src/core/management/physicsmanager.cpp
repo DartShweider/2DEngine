@@ -97,8 +97,6 @@ namespace engine
         {
             return;
         }
-
-
         object_1->position -= object_1->getComponent<PhysicalBody>()->velocity * Time::deltaTime;
         object_2->position -= object_2->getComponent<PhysicalBody>()->velocity * Time::deltaTime;
 

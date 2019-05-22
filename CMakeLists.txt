@@ -33,6 +33,7 @@ set(project_sources src/main.cpp
                     src/core/object_components/renderer.cpp
                     src/core/object_components/rectcollider.cpp
                     src/core/object_components/physicalbody.cpp
+                    src/core/object_components/animation.cpp
                     )
 
 add_executable(${PROJECT_NAME} ${project_sources})

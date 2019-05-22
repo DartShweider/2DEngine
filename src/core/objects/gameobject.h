@@ -7,6 +7,7 @@
 #include "../object_components/basicscript.h"
 #include "../object_components/rectcollider.h"
 #include "../object_components/physicalbody.h"
+#include "../object_components/animation.h"
 #include <iostream>
 #include "../object_components/gameobjectcomponent.h"
 #include <SFML/Graphics.hpp>
@@ -46,6 +47,7 @@ namespace engine
 
         void registerObjectRectCollider(GameObjectComponent* collider);
         void unregisterObjectRectCollider(GameObjectComponent* collider);
+
         void registerObjectPhysicalBody(GameObjectComponent* physBody);
         void unregisterObjectPhysicalBody(GameObjectComponent* physBody);
     };
