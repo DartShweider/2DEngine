@@ -26,6 +26,10 @@ void Application::createObjects()
     _2DEngine::createObject("level_1");
     _2DEngine::findObject("level_1")->addComponent<LevelScript>();
 
+    //creation gun
+    _2DEngine::createObject("gun_2");
+    _2DEngine::findObject("gun_2")->addComponent<Gun_2_Script>();
+
 }
 
 

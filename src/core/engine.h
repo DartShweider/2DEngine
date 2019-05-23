@@ -19,6 +19,7 @@ using engine::BasicScript;
 using engine::RectCollider;
 using engine::PhysicalBody;
 using engine::Animation;
+using engine::GameObject;
 
 namespace engine
 {
