@@ -60,7 +60,7 @@ public:
 
         parentObject->addComponent<PhysicalBody>();
         parentObject->addComponent<RectCollider>();
-        parentObject->getComponent<RectCollider>()->setCollider(-20,-20, 20,20);
+        parentObject->getComponent<RectCollider>()->setCollider(-15,-15, 15,15);
 
         //parentObject->getComponent<RectCollider>()->display();
 
@@ -69,7 +69,11 @@ public:
 
 
     }
-    void collide(engine::CollisionDetails& details){}
+    void collide(engine::CollisionDetails& details)
+    {
+        _2DEngine::deleteObject(_2DEngine::findObject("gun_2"));
+        _2DEngine::deleteObject(parentObject);
+    }
 
 };
 
@@ -190,7 +194,7 @@ public:
 
         parentObject->addComponent<PhysicalBody>();
         parentObject->addComponent<RectCollider>();
-        parentObject->getComponent<RectCollider>()->setCollider(-20,-20, 20,20);
+        parentObject->getComponent<RectCollider>()->setCollider(-15,-15, 15,15);
         //parentObject->getComponent<RectCollider>()->display();y = sf::Vector2f(150, 0);
     }
     void collide(engine::CollisionDetails& details)
@@ -208,13 +212,26 @@ public:
     void update()
     {
         parentObject->setPosition(tank->position.x, tank->position.y);
-        parentObject->directionAngle = tank->directionAngle;
-        parentObject->getComponent<Renderer>()->sprite.setRotation(parentObject->directionAngle + 90);
+
+
+        if (_2DEngine::KeyboardInput::getKey(KeyCode::E))
+        {
+            parentObject->directionAngle  += 70.f*_2DEngine::Time::deltaTime;
+
+        }
+
+        if (_2DEngine::KeyboardInput::getKey(KeyCode::Q))
+        {
+            parentObject->directionAngle  -= 70.f*_2DEngine::Time::deltaTime;
+
+        }
+        parentObject->getComponent<Renderer>()->sprite.setRotation(parentObject->directionAngle + 90 + tank->directionAngle);
     }
     void start()
     {
         parentObject->setPosition(tank->position.x, tank->position.y);
         sf::Texture texture;
+        parentObject->directionAngle = tank->directionAngle;
         texture.loadFromFile("tank/gun_2.png");
         parentObject->addComponent<Renderer>();
         parentObject->getComponent<Renderer>()->setSprite(texture);

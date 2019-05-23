@@ -23,12 +23,16 @@ namespace _2DEngine
 
     void deleteObject(std::string name)
     {
-        if(findObject(name) != 0)
+        GameObject* object = findObject(name);
+        if(object != 0)
+        {
+            delete object;
             Engine::instance()->dataStorage->gameObjects.erase(name);
+        }
     }
-
     void deleteObject(GameObject* object)
     {
+            delete object;
             Engine::instance()->dataStorage->gameObjects.erase(object->name);
     }
 

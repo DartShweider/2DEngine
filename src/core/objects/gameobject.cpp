@@ -14,6 +14,23 @@ namespace engine
                     delete component;
                     continue;
                 }
+                if (component->name == typeid(RectCollider).name())
+                {
+                    unregisterObjectRectCollider(component);
+                    continue;
+                }
+
+                if (component->name == typeid(PhysicalBody).name())
+                {
+                    unregisterObjectPhysicalBody(component);
+                    continue;
+                }
+                if (component->name == typeid(Animation).name())
+                {
+                    continue;
+                }
+
+
 
                 unregisterObjectScript(component);
             }
