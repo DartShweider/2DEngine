@@ -62,8 +62,7 @@ namespace engine
 
                 if (checkCollision(firstCollider, secondCollider))
                 {
-                    if (firstCollider->isPossibleCollision && secondCollider->isPossibleCollision)
-                    {
+
                         auto details_1 = setCollisionDetails(firstCollider, secondCollider);
                         auto details_2 = details_1;
                         details_2.collider1 = details_1.collider2;
@@ -71,13 +70,7 @@ namespace engine
                         pushApart(details_1);
                         Engine::instance()->logicsManager->collideObject(firstCollider->parentObject, details_1);
                         Engine::instance()->logicsManager->collideObject(secondCollider->parentObject, details_2);
-                        //firstCollider->isPossibleCollision = false;
-                        //secondCollider->isPossibleCollision = false;
-                    }
-                } else
-                {
-                    //firstCollider->isPossibleCollision = true;
-                    //secondCollider->isPossibleCollision = true;
+
                 }
 
             }

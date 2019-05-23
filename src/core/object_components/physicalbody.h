@@ -16,7 +16,7 @@ namespace engine
 
         float mass = 1.0f;
 
-        sf::Vector2f velocity;
+        sf::Vector2f velocity = {0,0};
         //sf::Vector2f prevPosition;
 
     };

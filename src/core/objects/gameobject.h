@@ -25,7 +25,7 @@ namespace engine
 
         std::string name;
         sf::Vector2f position;
-        sf::Vector2f direction;
+        float directionAngle = 0.f;
         std::vector<GameObjectComponent*> components;
 
         void setPosition(int x, int y);

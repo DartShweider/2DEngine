@@ -13,14 +13,18 @@ Application::Application()
 void Application::createObjects()
 {
     //creation player object
-    _2DEngine::createObject("player");
-    _2DEngine::findObject("player")->addComponent<TestScript>();
+    _2DEngine::createObject("player_1");
+    _2DEngine::findObject("player_1")->addComponent<Player_1_Script>();
 
 
 
     //creation enemy object
-    _2DEngine::createObject("enemyFirst");
-    _2DEngine::findObject("enemyFirst")->addComponent<EnemyScript>();
+    _2DEngine::createObject("player_2");
+    _2DEngine::findObject("player_2")->addComponent<Player_2_Script>();
+
+    //creation level
+    _2DEngine::createObject("level_1");
+    _2DEngine::findObject("level_1")->addComponent<LevelScript>();
 
 }
 

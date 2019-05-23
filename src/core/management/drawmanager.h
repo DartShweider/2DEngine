@@ -4,6 +4,8 @@
 #include <vector>
 #include "../object_components/renderer.h"
 #include "../object_components/rectcollider.h"
+#include <math.h>
+
 
 namespace engine
 {
@@ -11,8 +13,8 @@ namespace engine
     struct WindowSettings
     {
         inline static const  std::string name = "Example";
-        static const int width = 1440;
-        static const int height = 800;
+        static const int width = 1600;
+        static const int height = 900;
     };
 
     class DrawManager
