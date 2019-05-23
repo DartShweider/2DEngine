@@ -79,21 +79,21 @@ public:
 
     std::vector<std::vector<int>> level   {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                                            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,1},
-                                           {1,0,2,2,2,0,2,2,0,0,0,0,0,2,2,0,0,2,2,0,0,0,0,0,0,0,0,2,2,0,0,1},
+                                           {1,0,2,2,2,0,2,2,0,0,0,0,0,2,2,3,0,2,2,0,0,0,0,0,0,0,0,2,2,0,0,1},
                                            {1,0,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,2,2,0,0,1},
-                                           {1,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,2,2,0,0,1},
-                                           {1,0,0,0,0,2,0,0,0,0,2,2,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,2,2,0,0,1},
+                                           {1,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,2,2,0,0,1},
+                                           {1,0,0,0,0,2,4,0,0,0,2,2,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,3,2,0,0,1},
                                            {1,0,0,0,0,2,2,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,1},
                                            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1},
                                            {1,0,0,0,0,2,2,2,2,0,2,0,0,0,0,0,0,0,0,0,1,0,0,2,2,0,0,0,0,0,0,1},
-                                           {1,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,2,2,0,0,1,0,0,0,0,0,2,2,2,0,0,1},
-                                           {1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,2,0,1,0,0,0,0,0,0,0,2,0,0,1},
-                                           {1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,2,2,0,1,0,0,0,2,2,0,0,2,0,0,1},
-                                           {1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,1},
-                                           {1,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,1},
-                                           {1,0,0,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,1},
-                                           {1,0,0,2,0,0,0,1,0,0,2,2,2,2,0,0,0,2,2,2,2,2,2,0,0,0,0,0,2,0,0,1},
-                                           {1,0,0,2,0,0,0,1,0,0,2,0,0,0,0,0,0,0,0,0,0,2,1,1,1,0,0,0,0,0,0,1},
+                                           {1,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,2,2,3,0,1,0,0,0,0,0,2,2,2,0,0,1},
+                                           {1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,5,2,0,1,0,0,0,0,0,0,0,2,0,0,1},
+                                           {1,0,0,2,2,0,0,0,2,3,0,0,0,0,0,0,2,2,2,0,1,0,0,0,2,2,0,0,2,0,0,1},
+                                           {1,0,0,2,3,0,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,0,0,4,2,0,0,0,0,0,1},
+                                           {1,0,0,2,2,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,1},
+                                           {1,0,0,2,2,0,0,1,0,2,2,2,2,2,2,0,0,0,0,0,3,2,0,0,0,0,0,0,2,0,0,1},
+                                           {1,0,0,2,2,0,0,1,0,2,2,2,2,2,2,0,0,2,2,2,2,2,2,0,0,0,0,0,2,0,0,1},
+                                           {1,0,0,2,2,0,0,1,0,2,2,6,3,2,2,0,0,0,0,0,3,2,1,1,1,0,0,0,0,0,0,1},
                                            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 
     void update(){}
@@ -127,6 +127,54 @@ public:
                     _2DEngine::findObject("block" + std::to_string(i) + std::to_string(j))->addComponent<PhysicalBody>();
                     _2DEngine::findObject("block" + std::to_string(i) + std::to_string(j))->addComponent<RectCollider>();
                     _2DEngine::findObject("block" + std::to_string(i) + std::to_string(j))->getComponent<RectCollider>()->setCollider(-25,-25,25,25);
+                }
+                if (level[i][j] == 3 )
+                {
+                    _2DEngine::createObject("block" + std::to_string(i) + std::to_string(j));
+                    _2DEngine::findObject("block" + std::to_string(i) + std::to_string(j))->setPosition(25 + 50* j, 25 + 50*i);
+                    _2DEngine::findObject("block" + std::to_string(i) + std::to_string(j))->addComponent<Renderer>();
+                    sf::Texture texture;
+                    texture.loadFromFile("blocks/heal.png");
+                    _2DEngine::findObject("block" + std::to_string(i) + std::to_string(j))->getComponent<Renderer>()->setSprite(texture);
+                    _2DEngine::findObject("block" + std::to_string(i) + std::to_string(j))->addComponent<PhysicalBody>();
+                    _2DEngine::findObject("block" + std::to_string(i) + std::to_string(j))->addComponent<RectCollider>();
+                    _2DEngine::findObject("block" + std::to_string(i) + std::to_string(j))->getComponent<RectCollider>()->setCollider(-8,-8,8,8);
+                }
+                if (level[i][j] == 4 )
+                {
+                    _2DEngine::createObject("tank" + std::to_string(i) + std::to_string(j));
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->setPosition(25 + 50* j, 25 + 50*i);
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->addComponent<Renderer>();
+                    sf::Texture texture;
+                    texture.loadFromFile("tank/gun_1.png");
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->getComponent<Renderer>()->setSprite(texture);
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->addComponent<PhysicalBody>();
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->addComponent<RectCollider>();
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->getComponent<RectCollider>()->setCollider(-8,-16,8,16);
+                }
+                if (level[i][j] == 5 )
+                {
+                    _2DEngine::createObject("tank" + std::to_string(i) + std::to_string(j));
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->setPosition(25 + 50* j, 25 + 50*i);
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->addComponent<Renderer>();
+                    sf::Texture texture;
+                    texture.loadFromFile("tank/gun_2.png");
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->getComponent<Renderer>()->setSprite(texture);
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->addComponent<PhysicalBody>();
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->addComponent<RectCollider>();
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->getComponent<RectCollider>()->setCollider(-8,-16,8,16);
+                }
+                if (level[i][j] == 6 )
+                {
+                    _2DEngine::createObject("tank" + std::to_string(i) + std::to_string(j));
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->setPosition(25 + 50* j, 25 + 50*i);
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->addComponent<Renderer>();
+                    sf::Texture texture;
+                    texture.loadFromFile("tank/gun_3.png");
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->getComponent<Renderer>()->setSprite(texture);
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->addComponent<PhysicalBody>();
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->addComponent<RectCollider>();
+                    _2DEngine::findObject("tank" + std::to_string(i) + std::to_string(j))->getComponent<RectCollider>()->setCollider(-8,-16,8,16);
                 }
             }
         }
@@ -182,7 +230,7 @@ public:
         parentObject->addComponent<Animation>();
         for(int i = 1; i<=2; i++)
         {
-            parentObject->getComponent<Animation>()->upload("tank/tank_" + std::to_string(i) + ".png");
+            parentObject->getComponent<Animation>()->upload("tank/sectank_" + std::to_string(i) + ".png");
         }
         parentObject->getComponent<Renderer>()->setSprite(parentObject->getComponent<Animation>()->pictures[0]);
         parentObject->getComponent<Renderer>()->sprite.setRotation(parentObject->directionAngle + 90);
