@@ -26,6 +26,7 @@ namespace engine
         this->drawManager = new DrawManager();
         this->dataStorage = new DataStorage();
         this->logicsManager = new LogicsManager();
+        this->physicsManager = new PhysicsManager();
 
     }
 
@@ -33,9 +34,16 @@ namespace engine
     {
         while (drawManager->getWindow()->isOpen())
         {
+            sf::Event event;
+            drawManager->getWindow()->pollEvent(event);
+            if (event.type == sf::Event::Closed)
+            {
+                drawManager->getWindow()->close();
+            }
+            Time::updateTime();
             logicsManager->updateLogics();
+            physicsManager->updatePhysics();
             drawManager->drawAllObjects();
         }
-
     }
 }

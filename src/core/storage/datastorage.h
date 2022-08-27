@@ -13,7 +13,11 @@ namespace engine
     {
     public:
         DataStorage();
-        std::map<std::string, GameObject*> gameObjects;
+        std::vector<GameObject*> gameObjects;
+        GameObject* findObject(std::string name);
+        GameObject* findObject(GameObject* object);
+        void removeObject(std::string name);
+        void removeObject(GameObject* object);
     };
 }
 #endif // DATASTORAGE_H

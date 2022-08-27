@@ -8,9 +8,10 @@
 
 namespace engine
 {
-    DrawManager::DrawManager()//: window(sf::VideoMode(1600, 900), "Example")
+    DrawManager::DrawManager()
     {
-        window = new sf::RenderWindow(sf::VideoMode(settings.width, settings.height), "Example");
+        window = new sf::RenderWindow(sf::VideoMode(WindowSettings::width, WindowSettings::height), WindowSettings::name);
+        window->setFramerateLimit(60);
     }
 
 
@@ -21,9 +22,11 @@ namespace engine
 
         for (auto element : Engine::instance() -> drawManager -> allRenderers)
             {
-
-                    element->draw(window);
-
+                    element->draw();
+            };
+        for (auto element : Engine::instance() -> drawManager -> allRectColliders)
+            {
+                    drawCollider(element);
             };
 
         window->display();
@@ -48,6 +51,39 @@ namespace engine
     void DrawManager::removeRenderer(Renderer* renderer)
     {
         allRenderers.erase(remove(allRenderers.begin(), allRenderers.end(), renderer), allRenderers.end());
+    }
+
+    void DrawManager::addCollider(RectCollider* collider)
+    {
+        allRectColliders.push_back(collider);
+    }
+
+    void DrawManager::removeCollider(RectCollider* collider)
+    {
+        allRectColliders.erase(remove(allRectColliders.begin(), allRectColliders.end(), collider), allRectColliders.end());
+    }
+
+    void DrawManager::drawCollider(RectCollider* collider)
+    {
+        sf::Vertex lines[] =
+        {
+            sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->leftUpper.y)),
+            sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->rightBottom.y)),
+
+            sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->leftUpper.y)),
+            sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->leftUpper.y)),
+
+            sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->leftUpper.y)),
+            sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->rightBottom.y)),
+
+            sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->rightBottom.y)),
+            sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->rightBottom.y)),
+        };
+
+        for (auto& line : lines)
+            line.position = sf::Vector2f(line.position.x + collider->parentObject->position.x, line.position.y + collider->parentObject->position.y);
+
+        Engine::instance()->drawManager->getWindow()->draw(lines, 8, sf::Lines);
     }
 
 

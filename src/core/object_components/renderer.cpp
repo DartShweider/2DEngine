@@ -3,9 +3,10 @@
 
 namespace engine
 {
-    void Renderer::draw(sf::RenderWindow* window)
+    void Renderer::draw()
     {
-        sprite.setPosition(parentObject->coordinate.x, parentObject->coordinate.y);
+        sf::Vector2u textureSize = texture.getSize();
+        sprite.setPosition(parentObject->position.x, parentObject->position.y);
         Engine::instance()->drawManager->drawObject(sprite);
     }
 
@@ -13,6 +14,7 @@ namespace engine
     {
         texture = newTexture;
         sprite.setTexture(texture);
+        sprite.setOrigin(texture.getSize().x/2, texture.getSize().y/2);
 
     }
 

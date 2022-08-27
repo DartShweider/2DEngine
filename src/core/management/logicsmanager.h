@@ -2,7 +2,7 @@
 #define LOGICSMANAGER_H
 #include <vector>
 #include "../objects/gameobject.h"
-#include "eventmanager.h"
+//#include "eventmanager.h" --// Disabled input module
 
 
 namespace engine
@@ -14,14 +14,15 @@ namespace engine
         void updateLogics();
         void startAllScripts();
         void updateAllScripts();
-
+        void collideObject(CollisionDetails& details);
         void addScript(BasicScript* script);
         void removeScript(BasicScript* script);
-
-        EventManager* eventManager;
-    private:
         std::vector<BasicScript*> notStartedScripts;
         std::vector<BasicScript*> allScripts;
+
+        //EventManager* eventManager; --// Disabled input module
+    private:
+
 
 
     };
