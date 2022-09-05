@@ -8,22 +8,27 @@
 
 namespace engine
 {
+    class TextureNode;
+    class GameObjectComponent;
     class Animation : public GameObjectComponent
     {
     public:
 
         Animation();
         virtual ~Animation(){std::cout << "Animation Destructor" << std::endl;}
-        std::string name = "Animation";
-        ObjComponentName name2 = animation;
-
-        std::vector<sf::Texture> pictures;
-        void upload(std::string filePath);
-        void update();
+        void setTexture();
+        void addFrame(sf::IntRect rect);
+        void updateForward();
+        void updateBackward();
         float timeCounter = 0;
-        int timeMultiplier = 0;
+        int fps = 1;
 
-
+        sf::IntRect& getFrame(std::size_t n);
+        std::size_t getFramesSize();
+    private:
+        std::vector<sf::IntRect> frames;
+        sf::Texture* texture = nullptr;
+        std::size_t currentFrame = 0;
     };
 }
 

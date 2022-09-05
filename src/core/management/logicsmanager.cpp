@@ -1,5 +1,6 @@
 #include "logicsmanager.h"
-#include "../engine.h"
+#include "physicsmanager.h"
+#include "../object_components/basicscript.h"
 
 namespace engine
 {
@@ -11,14 +12,10 @@ namespace engine
 
     void LogicsManager::updateLogics()
     {
-
-
         //eventManager->catchEvents(); --// Disabled input module
-
         startAllScripts();
         //std::cout << "logics manager start scripts" << std::endl;
         updateAllScripts();
-
         //eventManager->clearEvents(); --// Disabled input module
     }
 

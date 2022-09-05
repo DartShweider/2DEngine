@@ -1,4 +1,6 @@
 #include "drawmanager.h"
+#include "../object_components/renderer.h"
+#include "../object_components/rectcollider.h"
 #include "../engine.h"
 #include <SFML/Graphics.hpp>
 
@@ -11,10 +13,8 @@ namespace engine
     DrawManager::DrawManager()
     {
         window = new sf::RenderWindow(sf::VideoMode(WindowSettings::width, WindowSettings::height), WindowSettings::name);
-        window->setFramerateLimit(60);
+        //window->setFramerateLimit(60);
     }
-
-
 
     void DrawManager::drawAllObjects()
     {
@@ -22,11 +22,12 @@ namespace engine
 
         for (auto element : Engine::instance() -> drawManager -> allRenderers)
             {
-                    element->draw();
+                element->update();
+                window->draw(*element);
             };
         for (auto element : Engine::instance() -> drawManager -> allRectColliders)
             {
-                    drawCollider(element);
+                drawCollider(element);
             };
 
         window->display();
@@ -41,7 +42,6 @@ namespace engine
     {
         window->draw(object);
     }
-
 
     void DrawManager::addRenderer(Renderer* renderer)
     {
@@ -65,26 +65,21 @@ namespace engine
 
     void DrawManager::drawCollider(RectCollider* collider)
     {
-        sf::Vertex lines[] =
-        {
-            sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->leftUpper.y)),
-            sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->rightBottom.y)),
+        sf::Vertex lines[8];
+        lines[0] = sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->leftUpper.y));
+        lines[1] = sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->rightBottom.y));
 
-            sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->leftUpper.y)),
-            sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->leftUpper.y)),
+        lines[2] = sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->leftUpper.y));
+        lines[3] = sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->leftUpper.y));
 
-            sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->leftUpper.y)),
-            sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->rightBottom.y)),
+        lines[4] = sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->leftUpper.y));
+        lines[5] = sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->rightBottom.y));
 
-            sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->rightBottom.y)),
-            sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->rightBottom.y)),
-        };
-
+        lines[6] = sf::Vertex(sf::Vector2f(collider->leftUpper.x, collider->rightBottom.y));
+        lines[7] = sf::Vertex(sf::Vector2f(collider->rightBottom.x, collider->rightBottom.y));
         for (auto& line : lines)
-            line.position = sf::Vector2f(line.position.x + collider->parentObject->position.x, line.position.y + collider->parentObject->position.y);
+            line.position = sf::Vector2f(line.position.x + collider->parentObject->getPosition().x, line.position.y + collider->parentObject->getPosition().y);
 
-        Engine::instance()->drawManager->getWindow()->draw(lines, 8, sf::Lines);
+        getWindow()->draw(lines, 8, sf::Lines);
     }
-
-
 }

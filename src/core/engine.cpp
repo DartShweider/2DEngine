@@ -1,6 +1,9 @@
 #include "engine.h"
+#include "tools/time.h"
 #include <iostream>
 #include <iterator>
+
+
 
 namespace engine
 {
@@ -27,22 +30,21 @@ namespace engine
         this->dataStorage = new DataStorage();
         this->logicsManager = new LogicsManager();
         this->physicsManager = new PhysicsManager();
-
     }
 
     void Engine::engineRun()
     {
+        sf::Event event;
         while (drawManager->getWindow()->isOpen())
         {
-            sf::Event event;
             drawManager->getWindow()->pollEvent(event);
             if (event.type == sf::Event::Closed)
             {
                 drawManager->getWindow()->close();
             }
-            Time::updateTime();
-            logicsManager->updateLogics();
+            _2DEngine::Time::updateTime();
             physicsManager->updatePhysics();
+            logicsManager->updateLogics();
             drawManager->drawAllObjects();
         }
     }

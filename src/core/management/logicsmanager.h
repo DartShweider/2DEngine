@@ -7,22 +7,22 @@
 
 namespace engine
 {
+    class CollisionDetails;
     class LogicsManager
     {
     public:
         LogicsManager();
         void updateLogics();
         void startAllScripts();
-        void updateAllScripts();
-        void collideObject(CollisionDetails& details);
         void addScript(BasicScript* script);
         void removeScript(BasicScript* script);
-        std::vector<BasicScript*> notStartedScripts;
-        std::vector<BasicScript*> allScripts;
+        void collideObject(CollisionDetails& details);
 
         //EventManager* eventManager; --// Disabled input module
     private:
-
+        std::vector<BasicScript*> notStartedScripts;
+        std::vector<BasicScript*> allScripts;
+        void updateAllScripts();
 
 
     };

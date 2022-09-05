@@ -2,15 +2,11 @@
 #define APPLICATION_H
 
 
-
-
-
-
-
 class Application
 {
 public:
     Application();
+    void loadAssets();
     void createObjects();
     void appRun();
 };

@@ -2,8 +2,6 @@
 #define DRAWMANAGER_H
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "../object_components/renderer.h"
-#include "../object_components/rectcollider.h"
 #include <math.h>
 
 
@@ -17,6 +15,9 @@ namespace engine
         static const int height = 1200;
     };
 
+    class RectCollider;
+    class Renderer;
+
     class DrawManager
     {
     public:
@@ -28,9 +29,6 @@ namespace engine
         void drawCollider(RectCollider* collider);
         void drawAllObjects();
 
-        std::vector<Renderer*> allRenderers;
-        std::vector<RectCollider*> allRectColliders;
-
         void addRenderer(Renderer* renderer);
         void removeRenderer(Renderer* renderer);
 
@@ -39,6 +37,8 @@ namespace engine
 
     private:
         sf::RenderWindow* window;
+        std::vector<Renderer*> allRenderers;
+        std::vector<RectCollider*> allRectColliders;
     };
 }
 

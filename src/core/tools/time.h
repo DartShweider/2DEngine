@@ -1,11 +1,12 @@
 #ifndef TIME_H
 #define TIME_H
-
+#include "../objects/gameobject.h"
 #include <chrono>
 #include <ctime>
 
-namespace engine
+namespace _2DEngine
 {
+    using namespace engine;
     class Time
     {
      public:

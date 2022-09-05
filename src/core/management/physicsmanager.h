@@ -5,10 +5,24 @@
 #include "../object_components/rectcollider.h"
 #include <vector>
 #include <iostream>
+#include <SFML/System/Time.hpp>
 
 
 namespace engine
 {
+    struct CollisionDetails
+    {
+        CollisionDetails(RectCollider* object_1, RectCollider* object_2, float depth_x, float depth_y) :
+        collider1(object_1), collider2(object_2), depth_x(depth_x), depth_y(depth_y)
+        {}
+
+        RectCollider* collider1 = nullptr;
+        RectCollider* collider2 = nullptr;
+
+        float depth_x;
+        float depth_y;
+    };
+
     class PhysicsManager
     {
     public:
@@ -34,21 +48,8 @@ namespace engine
         bool checkCollision(RectCollider* collider_1, RectCollider* collider_2);
 
         CollisionDetails setCollisionDetails(RectCollider* collider_1, RectCollider* collider_2);
-
     };
-    struct CollisionDetails
-    {
 
-        CollisionDetails(RectCollider* object_1, RectCollider* object_2, float depth_x, float depth_y) :
-        collider1(object_1), collider2(object_2), depth_x(depth_x), depth_y(depth_y)
-        {}
-
-        RectCollider* collider1 = nullptr;
-        RectCollider* collider2 = nullptr;
-
-        float depth_x;
-        float depth_y;
-    };
 }
 
 
